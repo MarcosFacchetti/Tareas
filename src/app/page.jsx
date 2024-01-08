@@ -1,10 +1,10 @@
 import Task from "./models/Task"
 import TaskCard from "../components/TaskCard"
-import {connectDB} from "../utils/mongoose"
+import { connectDB } from "../utils/mongoose"
 import "./page.css"
 
 async function loadTasks() {
-  connectDB()
+  await connectDB(); // Esperar a que se establezca la conexión
   const tasks = await Task.find()
   return tasks
 }
