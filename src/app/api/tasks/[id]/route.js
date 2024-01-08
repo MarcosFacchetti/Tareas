@@ -4,7 +4,7 @@ import Task from "../../../models/Task"
 
 export async function GET(request, { params }) {
     try {
-        connectDB()
+        await connectDB()
         const taskFound = await Task.findById(params.id)
     
         if (!taskFound) 
