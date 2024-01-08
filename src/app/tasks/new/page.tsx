@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent, FormEvent, useState, useEffect  } from "react";
+import { ChangeEvent, FormEvent, useState, useEffect, useCallback  } from "react";
 import { useRouter, useParams } from "next/navigation";
 import "./Form.css";
 
@@ -13,15 +13,24 @@ function FormPage() {
     const router = useRouter();
     const params = useParams();
 
-    const getTask =  async () => {
-       const res = await fetch(`/api/tasks/${params.id}`)
-       const data = await res.json()
-       console.log(data)
-       setNewTask({
-        title: data.title,
-        description: data.description,
-       })
-    }
+
+    const getTask = useCallback(async () => {
+
+        const res = await fetch(`/api/tasks/${params.id}`)
+        const data = await res.json()
+        console.log(data)
+        setNewTask({
+         title: data.title,
+         description: data.description,
+        })    }, [params.id]);
+    
+    useEffect(() => {
+        if (params.id) {
+            getTask();
+        }
+    }, [getTask, params.id]);
+    
+
 
     
 
@@ -77,13 +86,11 @@ function FormPage() {
         e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
         ) =>  setNewTask({... newTask, [e.target.name]: e.target.value})
 
-    useEffect(() => {
-
-        if (params.id) {
-            getTask()
-        }
-
-    }, [])
+        useEffect(() => {
+            if (params.id) {
+                getTask();
+            }
+        }, [getTask, params.id]);
 
   return (
     <div className="contenedor_form">
