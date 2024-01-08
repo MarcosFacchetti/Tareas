@@ -1,0 +1,23 @@
+.contenedor_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 15rem);
+}
+
+.contenedor_form form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(---card);
+    padding: 2rem;
+    border-radius: 10px;
+    
+}
+
+.contenedor_form button {
+    background-color: green;
+    margin-top: 1rem;
+}

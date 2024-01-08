@@ -1,0 +1,8 @@
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: calc(100vh - 15rem);
+}

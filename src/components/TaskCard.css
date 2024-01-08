@@ -1,0 +1,13 @@
+.card {
+    background-color: var(---card);
+    border-radius: 5%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    width: 15rem;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(---txt);
+    color: var(---txt);
+}
